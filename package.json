@@ -1,0 +1,12 @@
+{
+  "name": "nakama-simple",
+  "version": "1.0.0",
+  "description": "Simple Nakama server project using a single main.js module",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose up",
+    "stop": "docker-compose down",
+    "restart": "docker-compose down && docker-compose up",
+    "logs": "docker-compose logs -f nakama-simple"
+  }
+}
