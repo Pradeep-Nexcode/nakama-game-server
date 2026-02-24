@@ -2,7 +2,7 @@ FROM registry.heroiclabs.com/heroiclabs/nakama:3.22.0
 
 COPY ./data /nakama/data
 
-ENTRYPOINT ["/bin/sh","-c"]
+ENTRYPOINT ["/bin/sh", "-c"]
 
 CMD /nakama/nakama migrate up --database.address "$DATABASE_URL" && \
     /nakama/nakama \
@@ -12,5 +12,6 @@ CMD /nakama/nakama migrate up --database.address "$DATABASE_URL" && \
     --session.token_expiry_sec 7200 \
     --runtime.path "/nakama/data/modules" \
     --runtime.js_entrypoint "main.js" \
-    --socket.port $PORT \
-    --console.port $(($PORT+1))
+    --socket.port ${PORT:-7350} \
+    --console.port 7351 \
+    --metrics.prometheus_port 7352
