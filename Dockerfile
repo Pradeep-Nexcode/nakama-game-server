@@ -2,10 +2,10 @@ FROM registry.heroiclabs.com/heroiclabs/nakama:3.22.0
 
 COPY ./data /nakama/data
 
-ENTRYPOINT ["/bin/sh","-ec"]
+ENTRYPOINT ["/bin/sh", "-c"]
 
 CMD /nakama/nakama migrate up --database.address "$DATABASE_URL" && \
-    exec /nakama/nakama \
+    /nakama/nakama \
     --name nakama1 \
     --database.address "$DATABASE_URL" \
     --logger.level INFO \
